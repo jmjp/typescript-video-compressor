@@ -11,7 +11,7 @@ class UploadController {
             let file = req.file;
             let filePath = file.path;
             let fileExtension = file.originalname.split('.').pop();
-            await ffmpeg(filePath).output(`${filePath}.${fileExtension}`).size('50%').aspectRatio('16:9').format('mp4')
+            await ffmpeg(filePath).output(`${filePath}.${fileExtension}`).size('50%').aspectRatio('16:9').FPS(30).format('mp4')
             .on('end',async (stdout,stderr) => {
                 if(stderr){
                     console.log(stderr);
