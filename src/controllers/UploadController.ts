@@ -10,7 +10,6 @@ class UploadController {
         try{
             let file = req.file;
             let filePath = file.path;
-            let fileName = file.filename;
             let fileExtension = file.originalname.split('.').pop();
             await ffmpeg(filePath).output(`${filePath}.${fileExtension}`).size('50%').aspectRatio('16:9').format('mp4')
             .on('end',async (stdout,stderr) => {
